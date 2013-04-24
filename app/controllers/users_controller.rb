@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
   def index
     
@@ -7,7 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to user_path
+      redirect_to @user
+      session[:user_id] = @user.id
     else
       render :new
     end
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @user = current_user
   end
 
   def update

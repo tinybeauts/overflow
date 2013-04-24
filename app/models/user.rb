@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, :with => /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
   validates_length_of :password, :in => 6..20
+
+  def gravatar_url
+    Gravatar.new(email).url
+  end
+
 end
