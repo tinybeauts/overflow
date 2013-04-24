@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20130424170555) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "choice_id"

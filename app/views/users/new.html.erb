@@ -1,8 +1,13 @@
-<% if flash[:error]%>
-  <p class="error"><%= flash[:error] %></p>
-<%end%>
-
 <%= form_for @user do |form|%>
+
+<% if @user.errors.any? %>
+  <div id="errors">
+    <h2><%= pluralize(@user.errors.count, "error")%></h2>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </div>
+<% end %>
   <%= form.text_field :first_name, :placeholder => "First Name" %>
   <%= form.text_field :last_name, :placeholder => "Last Name" %>
   <%= form.email_field :email, :placeholder => "Email" %>
