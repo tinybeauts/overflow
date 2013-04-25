@@ -24,7 +24,8 @@ class AnswersController < ApplicationController
   end
   
   def show
-
+    @question = Question.find(params[:question_id])
+    redirect_to @question
   end
   
   def update

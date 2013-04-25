@@ -2,7 +2,7 @@ DbcOverflow::Application.routes.draw do
   resources :users
 
   resources :questions do
-    resources :answers
+    resources :answers, :responses
   end
 
   resources :sessions, only: [:new, :create, :destroy]
