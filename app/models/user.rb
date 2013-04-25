@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
   has_many :questions
   has_many :answers
@@ -18,5 +19,11 @@ class User < ActiveRecord::Base
   def gravatar_url
     Gravatar.new(email).url
   end
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 end
