@@ -4,12 +4,12 @@ class Gravatar
     @email = email
   end
 
-  def hash
+  def user
     Digest::MD5.hexdigest(@email.to_s.strip.downcase)
   end
 
   def url
-    "http://www.gravatar.com/avatar/#{hash}?d=retor&s=134"
+    "https://secure.gravatar.com/avatar/#{user}"
   end
 
 end

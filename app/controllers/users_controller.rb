@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   include UsersHelper
 
   def index
-    
+    # @user = User.find_by_email(params[:email])
+    # if @user.authenticate(@user.email, @user.password)
+    #   @user
+    # else 
+    #   redirect_to :index
+    # end
+    # @user = User.new
   end
 
   def create
@@ -24,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update

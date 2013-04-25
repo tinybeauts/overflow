@@ -1,0 +1,103 @@
+@import "bootstrap";
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 80px;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+nav li {
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+aside {
+  section {
+    padding: 10px 0px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+  }
+  span {
+    display: block;
+    line-height: 1;
+  }
+  h1 {
+    font-size: 1.4em;
+    text-align: left;
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box_sizing: border-box;
+}
+
+.debug_dump {
+  clear: both;
+  position: fixed;
+  bottom: 10px;
+  width: 80%;
+  margin: 0 5%;
+  @include box_sizing;
+}
+
+
+/* Forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 25px;
+  @include box-sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+button.btn {
+  margin: 0 auto;
+  display: block;
+  width: 40%;
+
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
