@@ -1,0 +1,15 @@
+<% provide(:title, @user.first_name) %>
+
+
+<%= image_tag @user.gravatar_url, alt: @user.first_name, class: "gravatar" %>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @user.first_name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
