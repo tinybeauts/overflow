@@ -1,16 +1,11 @@
-<% provide(:title, 'Home')%>
-<%= form_for @user do |form|%>
+<% provide(:title, 'Users')%>
+<h1>All Users</h1>
 
-<% if @user.errors.any? %>
-  <div id="errors">
-    <h2><%= pluralize(@user.errors.count, "error")%></h2>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </div>
-<% end %>
-  <%= form.email_field :email, :placeholder => "Email" %>
-  <%= form.password_field :password, :placeholder => "Password" %>
-
-  <%= form.button :submit %>
-<% end %>
+<ul class="users">
+  <% @users.each do |user|%>
+    <li>
+      <%= image_tag user.gravatar_url, alt: user.first_name, class: "gravatar", size: 52 %>
+      <%= link_to user.first_name, user %>
+    </li>
+  <% end %>
+</ul>

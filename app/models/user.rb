@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def gravatar_url
-    Gravatar.new(email).url
+    Gravatar.new(self.email).url
   end
 
   private

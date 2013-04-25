@@ -1,16 +1,10 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
 
   def index
-    # @user = User.find_by_email(params[:email])
-    # if @user.authenticate(@user.email, @user.password)
-    #   @user
-    # else 
-    #   redirect_to :index
-    # end
-    # @user = User.new
+    @users = User.all
   end
 
   def create
