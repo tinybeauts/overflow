@@ -1,8 +1,22 @@
 <% provide(:title, "#{@question.title}")%>
 
+<%= render 'edit_buttons' %>
+
 <h1><%= @question.title %></h1>
 
 <p><%= @question.body %></p>
 
-<%= render 'edit_buttons' %>
+<% if signed_in? %>
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.text_area :body %>
+    <%= f.button :submit, id: "answer-btn", class: "btn btn-large btn-success" %>
+  <% end %>
+<% end %>
+
+<section>
+  <% @question.answers.each do |answer|%>
+    <p class="answer"><%= answer.body %></p>
+  <% end %>
+</section>
+
 

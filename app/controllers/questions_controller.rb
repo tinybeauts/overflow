@@ -33,6 +33,7 @@ class QuestionsController < ApplicationController
   def show
     # show one question (id)
     @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
   def update

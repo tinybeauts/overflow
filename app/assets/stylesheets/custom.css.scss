@@ -69,7 +69,6 @@ aside {
 
 
 /* Forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -114,5 +113,30 @@ button.btn {
     &:last-child {
       border-bottom: 1px solid #ccc;
     }
+  }
+}
+
+textarea {
+  margin-top: 20px;
+  width: 60%;
+  height: 75px;
+  float: left;
+}
+
+#answer-btn {
+  width: 15%;
+  clear: right;
+  height: 45px;
+  margin-top: 40px;
+  margin-left: 20px;
+  float: left;
+}
+
+p.answer {
+  clear: both;
+  padding: 5px 0px 0px 5px;
+  border-top: 1px solid #ccc;
+  &:last-child {
+    border-bottom: 1px solid #ccc;
   }
 }
