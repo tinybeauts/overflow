@@ -6,6 +6,8 @@
     <%= render 'form' %>
 
     <%= image_tag @user.gravatar_url, alt: @user.first_name, class: "gravatar" %>
-    <a href="http://grvatar.com/emails">change</a>
+    <a href="http://gravatar.com/<%= @user.email %>">change</a>
+
+    <%= link_to "Delete", @user, method: :delete, class: "btn btn-large btn-danger"%>
   </div>
 </div>
