@@ -1,15 +1,18 @@
 <% provide(:title, @user.first_name) %>
-
-
-<%= image_tag @user.gravatar_url, alt: @user.first_name, class: "gravatar" %>
-
 <div class="row">
   <aside class="span4">
     <section>
+      <%= image_tag @user.gravatar_url, alt: @user.first_name, class: "gravatar" %> 
       <h1>
         <%= @user.first_name %>
       </h1>
     </section>
+
+    <ul>
+      <% @user.questions.each do |q| %>
+        <li><%= link_to "#{q.title}",  question_path(q) %></li>
+      <% end %>
+    </ul>
   </aside>
 </div>
 

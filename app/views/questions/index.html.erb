@@ -2,5 +2,11 @@
 
 <div class="hero-unit center">
   <h1>DBC OVERFLOW</h1>
-  <%= link_to "Sign up", new_user_path, class: "btn btn-large btn-primary" %>
+  <article class="questions">
+    <% @questions.each do |question| %>
+      <h2><%= link_to question.title, question_path(question) %></h2>
+      <p><%= question.body %></p>
+    <% end %>
+  </article>
+  <%= link_to "New Question", new_question_path, class: "btn btn-large btn-primary" %>
 </div>
