@@ -1,0 +1,12 @@
+<%= form_for @user, class: "form-horizontal" do |form| %>
+<%= render 'shared/error_messages' %>
+
+<%= form.text_field :first_name, :placeholder => "First Name" %>
+<%= form.text_field :last_name, :placeholder => "Last Name" %>
+<%= form.email_field :email, :placeholder => "Email" %>
+<%= form.password_field :password, :placeholder => "Password" %>
+<%= form.password_field :password_confirmation, :placeholder => "Confirm Password" %>
+
+<%= form.button :submit, class: "btn btn-info"%>
+<% end %>
+
