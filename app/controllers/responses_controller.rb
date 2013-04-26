@@ -7,15 +7,19 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(params[:response])
     if @response.save
-      if @question = Question.find(params[:question_id])
+      if params[:question_id]
+        @question = Question.find(params[:question_id])
         @question.responses << @response
+        flash[:success] = "Your question comment was saved!"
         redirect_to @question
-      elsif @answer = Answer.find(params[:answer_id])
+      elsif params[:answer_id] 
+        @answer = Answer.find(params[:answer_id])
         @answer.responses << @response
-        redirect_to @answer.question_id
+        flash[:success] = "Your answer comment was saved!"
+
+        redirect_to Question.find(@answer.question_id)
       end
       current_user.responses << @response
-      flash[:success] = "Your comment was saved!"
     else
       flash[:error] = "Bummer"
       redirect_to questions_path
