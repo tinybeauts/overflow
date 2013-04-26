@@ -33,6 +33,7 @@ class QuestionsController < ApplicationController
   def show
     # show one question (id)
     @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
   def update
@@ -57,7 +58,7 @@ class QuestionsController < ApplicationController
 
     def correct_user_question 
       @question = Question.find(params[:id])
-      redirect_to signin_path unless @question.user_id == current_user.id
+      redirect_to @question unless @question.user_id == current_user.id
     end
   
 end

@@ -1,6 +1,10 @@
 DbcOverflow::Application.routes.draw do
   resources :users
-  resources :questions
+
+  resources :questions do
+    resources :answers, :responses
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: "static_pages#home"

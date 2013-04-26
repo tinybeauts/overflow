@@ -1,8 +1,23 @@
 <% provide(:title, "#{@question.title}")%>
 
+<%= render 'edit_buttons' %>
+
 <h1><%= @question.title %></h1>
 
 <p><%= @question.body %></p>
 
-<%= render 'edit_buttons' %>
+<%= render 'answers/form' %>
+
+<section>
+  <% @question.answers.each do |answer|%>
+    <p class="answer"><%= answer.body %></p>
+    <%if signed_in?%>
+      <% if answer.user_id == current_user.id %>
+        <%= link_to "Edit", edit_question_answer_path(@question, answer), class: "btn btn-small btn-warning"%>
+        <%= link_to "Delete", [@question, answer], method: :delete, class: "btn btn-small btn-danger"%>
+      <% end %>
+    <% end %>
+  <% end %>
+</section>
+
 

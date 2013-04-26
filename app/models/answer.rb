@@ -3,7 +3,9 @@ class Answer < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :question
-
+  
   has_many :responses, :as => :comment
   has_many :votes,     :as => :choice
+
+  validates :body, :presence => true
 end

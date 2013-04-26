@@ -1,0 +1,6 @@
+<% if signed_in? %>
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.text_area :body %>
+    <%= f.button :submit, id: "answer-btn", class: "btn btn-large btn-success" %>
+  <% end %>
+<% end %>
