@@ -10,7 +10,7 @@
 
 <%= render 'responses/form_question' %>
 
-<section>
+<section class="answer">
   <% @question.answers.each do |answer|%>
     <p class="answer"><%= answer.body %></p>
     <%if signed_in?%>
@@ -19,6 +19,25 @@
         <%= link_to "Delete", [@question, answer], method: :delete, class: "btn btn-small btn-danger"%>
       <% end %>
     <% end %>
+
+    <%= form_for [answer, @response] do |f| %>
+      <%= f.text_field :body %>
+      <%= f.button :submit, class: "btn btn-small btn-success" %>
+    <% end %>
+
+
+    <section class="answer-responses">
+      <% answer.responses.each do |response|%>
+        <p class="response"><%= response.body %></p>
+      <% end %>
+    </section>
+
+  <% end %>
+</section>
+
+<section class="question-responses">
+  <% @question.responses.each do |response|%>
+    <p class="response"><%= response.body %></P> 
   <% end %>
 </section>
 
