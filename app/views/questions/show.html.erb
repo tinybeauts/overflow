@@ -8,6 +8,8 @@
 
 <%= render 'answers/form' %>
 
+<%= render 'responses/form_question' %>
+
 <section>
   <% @question.answers.each do |answer|%>
     <p class="answer"><%= answer.body %></p>
