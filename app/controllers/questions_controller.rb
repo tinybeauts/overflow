@@ -35,6 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = Answer.new
     @response = Response.new
+    @vote = Vote.new
   end
 
   def update
@@ -53,6 +54,10 @@ class QuestionsController < ApplicationController
     Question.find(params[:id]).destroy
     flash[:success] = "Your question was destroyed"
     redirect_to root_path
+  end
+
+  def vote
+      
   end
 
   private
