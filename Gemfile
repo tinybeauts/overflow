@@ -33,6 +33,7 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'capybara'
 end
 
 # To use ActiveModel has_secure_password

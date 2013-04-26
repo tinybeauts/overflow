@@ -3,12 +3,33 @@
 <%= render 'edit_buttons' %>
 
 <h1><%= @question.title %></h1>
+<% if signed_in? %>
+
+
+<!--   <form method="post" action="/vote" class="up question">
+    <input type="hidden" name="vote[up]" value="true">
+    <input type="hidden" name="vote[choice_type]" value="question">
+    <input type="hidden" name="vote[choice_id]" value="<%= @question.id %>">
+    <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
+    <button type="submit" name="up" class="btn btn-small btn-success">UP</button>
+  </form>
+  <form method="post" action="/vote" class="down question">
+    <input type="hidden" name="vote[up]" value="false">
+    <input type="hidden" name="vote[choice_type]" value="question">
+    <input type="hidden" name="vote[choice_id]" value="<%= @question.id %>">
+    <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
+    <button type="submit" name="down" class="btn btn-small btn-danger">DOWN</button>
+  </form> -->
+<% end %>
+
 
 <p><%= @question.body %></p>
 
-<%= render 'answers/form' %>
-
-<%= render 'responses/form_question' %>
+<% if signed_in? %>
+  <%= render 'answers/form' %>
+  
+  <%= render 'responses/form_question' %>
+<% end %>
 
 <section class="answer">
   <% @question.answers.each do |answer|%>
@@ -18,13 +39,29 @@
         <%= link_to "Edit", edit_question_answer_path(@question, answer), class: "btn btn-small btn-warning"%>
         <%= link_to "Delete", [@question, answer], method: :delete, class: "btn btn-small btn-danger"%>
       <% end %>
-    <% end %>
 
-    <%= form_for [answer, @response] do |f| %>
-      <%= f.text_field :body %>
-      <%= f.button :submit, class: "btn btn-small btn-success" %>
-    <% end %>
+      <!-- <form method="post" action="/vote" class="up answer">
+        <input type="hidden" name="vote[up]" value="true">
+        <input type="hidden" name="vote[choice_type]" value="answer">
+        <input type="hidden" name="vote[choice_id]" value="<%= answer.id %>">
+        <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
+        <button type="submit" name="up" class="btn btn-small btn-success">UP</button>
+      </form>
+      <form method="post" action="/vote" class="down answer">
+        <input type="hidden" name="vote[up]" value="false">
+        <input type="hidden" name="vote[choice_type]" value="answer">
+        <input type="hidden" name="vote[choice_id]" value="<%= answer.id %>">
+        <input type="hidden" name="vote[user_id]" value="<%= current_user.id %>">
+        <button type="submit" name="down" class="btn btn-small btn-danger">DOWN</button>
+      </form> -->
 
+
+      <%= form_for [answer, @response] do |f| %>
+        <%= f.text_field :body, placeholder: "Body" %>
+        <%= f.button :submit, class: "btn btn-small btn-info" %>
+      <% end %>
+
+    <% end %>
 
     <section class="answer-responses">
       <% answer.responses.each do |response|%>
@@ -37,7 +74,7 @@
 
 <section class="question-responses">
   <% @question.responses.each do |response|%>
-    <p class="response"><%= response.body %></P> 
+    <p class="response"><%= response.body %></p>
   <% end %>
 </section>
 
