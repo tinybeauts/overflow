@@ -34,6 +34,7 @@ class QuestionsController < ApplicationController
     # show one question (id)
     @question = Question.find(params[:id])
     @answer = Answer.new
+    @response = Response.new
   end
 
   def update
